@@ -34,6 +34,6 @@ func reset() -> void:
 
 func give_mail_task() -> void:
 	var id: int = randi_range(0, 38)
-	EventBus.set_mailbox.emit(id)
 	
 	current_mail_task = id
+	EventBus.set_mailbox.emit(id)
