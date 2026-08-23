@@ -15,6 +15,9 @@ func _ready() -> void:
 			car.basis = anchor.basis
 			car.rotation = anchor.rotation
 	)
+	
+	if GameManager.current_mail_task >= 0:
+		EventBus.set_mailbox.emit(GameManager.current_mail_task)
 
 func changed_map(prev: String, _new: String) -> void:
 	var player: Player = Util.get_player()

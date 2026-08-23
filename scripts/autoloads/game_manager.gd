@@ -7,6 +7,7 @@ var game_running: bool = true
 var changing_rooms: bool = false
 
 const normal_fov: float = 75.0
+var current_mail_task: int = -1
 
 func _ready() -> void:
 	add_child(canvas_layer)
@@ -32,5 +33,7 @@ func reset() -> void:
 	ui.pause_screen.hide()
 
 func give_mail_task() -> void:
-	var id: int = randi_range(0, 11)
+	var id: int = randi_range(0, 38)
 	EventBus.set_mailbox.emit(id)
+	
+	current_mail_task = id

@@ -66,7 +66,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0461051, 0)
 omni_range = 6.9504123
 omni_attenuation = 0.535
 
-[node name="static_npc" parent="." unique_id=542692205 instance=ExtResource("4_ajb67")]
+[node name="postman" parent="." unique_id=542692205 instance=ExtResource("4_ajb67")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6970977)
 NAME = "postman"
 dialogue_paragraph = "greet"
+
+[connection signal="done_line" from="postman" to="." method="_on_postman_done_talking"]

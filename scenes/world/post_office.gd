@@ -12,3 +12,6 @@ func changed_map(prev: String, _to: String) -> void:
 	match prev:
 		"main_outside":
 			player.global_position = $entrance.global_position
+
+func _on_postman_done_talking() -> void:
+	GameManager.give_mail_task()

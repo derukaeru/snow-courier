@@ -1,4 +1,7 @@
 class_name StaticNPC extends StaticBody3D
+signal done_talking(paragraph: String)
+signal done_line
+
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var talk_area: InteractableComponent = $talk_area
 
@@ -22,6 +25,11 @@ func talk_interacted() -> void:
 		add_child(dialogue_bubble)
 		dialogue_bubble.global_position = global_position + Vector3(0.0, 1.5, 0.0)
 		
-		dialogue_bubble.done.connect(func() -> void: talking = false)
+		dialogue_bubble.dialogue_finished.connect(func() -> void: done_line.emit())
+		dialogue_bubble.done.connect(
+			func() -> void: 
+				talking = false
+				done_talking.emit(dialogue_paragraph)
+		)
 		
 		talking = true

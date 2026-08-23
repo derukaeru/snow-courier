@@ -13,12 +13,10 @@ func _ready() -> void:
 func _on_interacted() -> void:
 	if not is_active: return
 	
-	submit_mail()
 	animation.play("interact")
-	
-
-func submit_mail() -> void:
 	EventBus.delivered_mail.emit(id)
+	GameManager.give_mail_task()
+	is_active = false
 
 func set_as_next_mail(_id: int) -> void:
 	if _id != id: return
