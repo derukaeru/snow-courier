@@ -52,3 +52,35 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2116900277]
 libraries/ = SubResource("AnimationLibrary_4je5t")
+
+[node name="loading_progress" type="Label" parent="." unique_id=1799474978]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="loading" type="Label" parent="." unique_id=1243038487]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -9.5
+offset_right = 56.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "loading..."
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,6 +1,6 @@
 extends Node
 
-@onready var loading_screen: PackedScene = load("res://scenes/menu/loading_screen.tscn")
+@onready var loading_screen: PackedScene = load(Registry.UID.loading_screen)
 var loaded_resource: PackedScene
 var scene_path: String
 var progress: Array = []

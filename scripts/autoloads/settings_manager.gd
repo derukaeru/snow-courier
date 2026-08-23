@@ -11,12 +11,10 @@ func _ready() -> void:
 func set_sfx(value: float) -> void:
 	sound_effect_strength = value
 	apply_audio_settings()
-	print(sound_effect_strength)
 
 func set_music(value: float) -> void:
 	music_strength = value
 	apply_audio_settings()
-	print(music_strength)
 
 func set_fullscreen(value: bool) -> void:
 	fullscreen = value

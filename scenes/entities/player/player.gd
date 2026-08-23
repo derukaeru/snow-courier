@@ -7,6 +7,9 @@ class_name Player extends CharacterBody3D
 @onready var camera_anchor: Node3D = $camera_anchor
 @onready var camera: Camera3D = $camera_anchor/Camera3D
 
+@export var ground_check_height: float = 50.0
+@export var ground_check_depth: float = 100.0
+
 const gravity: float = 9.8
 const DEFAULT_SPEED: float = 2.0
 var speed: float = DEFAULT_SPEED
@@ -80,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		camera_anchor.rotation.y = lerp_angle(camera_anchor.rotation.y, target_rotation, 0.2)
 	
 	move_and_slide()
+	snap_to_ground_if_needed()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
@@ -100,3 +104,23 @@ func interact() -> void:
 	for entry in interactions:
 		if entry.active:
 			entry.interact()
+			
+func snap_to_ground_if_needed() -> void:
+	var space_state := get_world_3d().direct_space_state
+	var origin: Vector3 = global_position + Vector3.UP * ground_check_height
+	var target: Vector3 = global_position + Vector3.DOWN * ground_check_depth
+	
+	var query := PhysicsRayQueryParameters3D.create(origin, target)
+	query.exclude = [self]
+	# query.collision_mask = 1  # set this to your world/floor layer if needed
+	
+	var result: Dictionary = space_state.intersect_ray(query)
+	if result.is_empty():
+		return  # no floor found below/around — nothing to snap to, leave as is
+	
+	var floor_y: float = result.position.y
+	
+	# If the player is meaningfully below the floor hit point, they're stuck under the map
+	if global_position.y < floor_y - 0.05:
+		global_position.y = floor_y + 0.05
+		velocity.y = 0.0

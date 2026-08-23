@@ -33,5 +33,6 @@ environment = SubResource("Environment_l3cfh")
 
 [node name="background_music" type="AudioStreamPlayer" parent="." unique_id=2099434232]
 stream = ExtResource("4_l3cfh")
+volume_db = -0.31
 autoplay = true
 bus = &"music"

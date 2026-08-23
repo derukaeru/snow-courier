@@ -20,9 +20,9 @@ var brakelight_right_mat: Material
 var max_steer: float = 0.6
 var speed: float = 500
 
-var max_speed: float = speed
+var max_speed: float = 15.0
 var min_pitch: float = 0.8
-var max_pitch: float = 1.7
+var max_pitch: float = 2.0
 var min_volume_db: float = -20.0
 var max_volume_db: float = 0.0
 
@@ -30,6 +30,10 @@ var player_in: bool = false
 var is_leaving: bool = false
 var is_braking: bool = false
 var deceleration: float = 15.0
+var max_exit_speed: float = 3.0
+var max_exit_tilt_dot: float = 0.7
+
+var can_leave: bool = false
 
 var target_fov: float = 80.0
 
@@ -60,6 +64,10 @@ func _physics_process(delta: float) -> void:
 	engine_sfx.volume_db = lerp(min_volume_db, max_volume_db, speed_ratio)
 	engine_sfx.pitch_scale = lerp(min_pitch, max_pitch, speed_ratio)
 	
+	if player_in:
+		var upright: bool = global_transform.basis.y.dot(Vector3.UP) >= max_exit_tilt_dot
+		leave_car.active = can_leave and current_speed <= max_exit_speed and upright
+		
 	if not player_in: return
 	
 	var player: Player = Util.get_player()
@@ -118,18 +126,22 @@ func interacted() -> void:
 	tween_bob()
 	
 	enter_sfx.play()
+	can_leave = false
 	await get_tree().create_timer(1.0).timeout
 	leave_car.active = true
+	can_leave = true
 	
 func exit() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	if not player_in: return
 	
+	var exit_position: Vector3 = leave_marker.global_position 
+	
 	global_transform.basis = Basis()
 	angular_velocity = Vector3.ZERO
 	
-	player.position = leave_marker.position
+	player.global_position = exit_position
 	
 	player.show()
 	player.can_move = true
@@ -147,9 +159,10 @@ func exit() -> void:
 	enter_interact_left.active = true
 	enter_interact_right.active = true
 	leave_car.active = false
-	
-	player.collision.set_deferred("disabled", false)
 	tween_bob()
+	
+	await get_tree().create_timer(1.0).timeout
+	player.collision.set_deferred("disabled", false)
 
 func tween_bob() -> void:
 	var tw: Tween = get_tree().create_tween()

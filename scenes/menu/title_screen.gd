@@ -3,12 +3,17 @@ class_name TitleScreen extends Control
 @onready var hover_sfx: AudioStreamPlayer = $hover_sfx
 @onready var select_sfx: AudioStreamPlayer = $select_sfx
 
+var switching: bool = false
+
 func _ready() -> void:
 	GameManager.ui.hide()
 
 func start_pressed() -> void:
+	if switching: return
+	
 	select_sfx.play()
 	SceneChanger.change_scene("main")
+	switching = true
 
 func settings_pressed() -> void:
 	settings_screen.open()
