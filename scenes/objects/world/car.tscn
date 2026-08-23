@@ -97,7 +97,7 @@ transform = Transform3D(0.9999976, 0, -4.4703484e-08, 0, 1, 0, 4.4703484e-08, 0,
 shape = SubResource("BoxShape3D_haxwh")
 
 [node name="leave_marker" type="Marker3D" parent="." unique_id=950815526]
-transform = Transform3D(-0.99979895, 0, -0.020052582, 0, 1, 0, 0.020052582, 0, -0.99979895, 1.6491799, 0, -0.45846787)
+transform = Transform3D(-0.99979895, 0, -0.020052582, 0, 1, 0, 0.020052582, 0, -0.99979895, -1.8022873, 0, -0.45846787)
 
 [node name="player_seat" type="Marker3D" parent="." unique_id=960697642]
 transform = Transform3D(-0.99979895, 0, -0.020052582, 0, 1, 0, 0.020052582, 0, -0.99979895, 0.01497823, 0.4515192, 0.0084972605)

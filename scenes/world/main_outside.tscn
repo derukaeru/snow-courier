@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dpu23nyv1axev" path="res://scenes/objects/world/buildings/building_0.tscn" id="4_3npgm"]
 [ext_resource type="PackedScene" uid="uid://cvto7deo7w0hl" path="res://scenes/particles/snow.tscn" id="4_rtp6k"]
 [ext_resource type="PackedScene" uid="uid://bh3myxxf1jo13" path="res://scenes/objects/world/buildings/building_1.tscn" id="6_3ei2p"]
-[ext_resource type="PackedScene" uid="uid://bjt15iuday65v" path="res://scenes/entities/npc/static_npc.tscn" id="7_d0ssp"]
 [ext_resource type="PackedScene" uid="uid://bylrje63kc55j" path="res://scenes/objects/world/buildings/building_3.tscn" id="7_kpx70"]
 [ext_resource type="PackedScene" uid="uid://cb5vbybpffqso" path="res://scenes/objects/world/buildings/building_4.tscn" id="8_p1hoj"]
 [ext_resource type="PackedScene" uid="uid://dqkcgsaa4se1v" path="res://scenes/objects/world/car.tscn" id="8_p77db"]
@@ -17,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cwk3320p0bjan" path="res://scenes/objects/world/buildings/building_8.tscn" id="12_o5dxn"]
 [ext_resource type="PackedScene" uid="uid://ds2bvnbrruvih" path="res://scenes/objects/world/buildings/building_9.tscn" id="13_0jxww"]
 [ext_resource type="Script" uid="uid://cw8027kkdy1c7" path="res://scripts/components/room_transition.gd" id="17_kpx70"]
+[ext_resource type="PackedScene" uid="uid://dfpatff4d5okj" path="res://addons/godot_3d_cursor/scenes/3d_cursor.tscn" id="17_p1hoj"]
+[ext_resource type="Script" uid="uid://dt04kfvdc21nb" path="res://addons/godot_3d_cursor/scripts/3d_cursor.gd" id="18_c6n7n"]
 
 [sub_resource type="Gradient" id="Gradient_rtp6k"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -74,6 +75,7 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="objects" type="Node3D" parent="." unique_id=1723248943]
+visible = false
 
 [node name="lamppost2" parent="objects" unique_id=1252531563 instance=ExtResource("3_3npgm")]
 transform = Transform3D(-0.711278, 0, 0.7029108, 0, 1, 0, -0.7029108, 0, -0.711278, 20.98799, 17.894817, 19.374916)
@@ -643,6 +645,7 @@ transform = Transform3D(-0.713018, 0, -0.7011458, 0, 1, 0, 0.7011458, 0, -0.7130
 transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 3.8, 3.6)
 
 [node name="particles" type="Node3D" parent="." unique_id=759172373]
+visible = false
 
 [node name="snow" parent="particles" unique_id=1535659430 instance=ExtResource("4_rtp6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.06487, 23.72914, 26.45082)
@@ -732,21 +735,26 @@ amount = 512
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.22989, 23.72914, -13.933479)
 amount = 512
 
-[node name="npcs" type="Node3D" parent="." unique_id=990491505]
-
-[node name="static_npc" parent="npcs" unique_id=542692205 instance=ExtResource("7_d0ssp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9722996, 15.875902, 47.39045)
-
 [node name="car" parent="." unique_id=116658170 instance=ExtResource("8_p77db")]
 transform = Transform3D(0.7477981, 0, 0.66392624, 0, 1, 0, -0.66392624, 0, 0.7477981, 48.743694, 18.19125, 39.85788)
 
-[node name="RoomTransition" type="Area3D" parent="." unique_id=1046436392]
+[node name="post_office" type="Area3D" parent="." unique_id=1046436392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.864098, 19.09798, 45.410416)
 script = ExtResource("17_kpx70")
 transition_to = "post_office"
 interact_text = "enter"
 metadata/_custom_type_script = "uid://cw8027kkdy1c7"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomTransition" unique_id=955243193]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="post_office" unique_id=955243193]
 transform = Transform3D(0.7816838, 0, -0.6236749, 0, 1, 0, 0.6236749, 0, 0.7816838, -0.15018082, -1.1512451, 0.2827263)
 shape = SubResource("BoxShape3D_p1hoj")
+
+[node name="3DCursor" type="Marker3D" parent="." unique_id=857819139 groups=["Plugin3DCursor"] instance=ExtResource("17_p1hoj")]
+gizmo_extents = 0.0
+script = ExtResource("18_c6n7n")
+metadata/cursor_id = 0
+metadata/size_scale = 1.0
+metadata/show_title_label = true
+metadata/show_number_label = true
+metadata/scale_affect_labels = true
+metadata/_edit_lock_ = true

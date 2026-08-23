@@ -129,7 +129,7 @@ func exit() -> void:
 	global_transform.basis = Basis()
 	angular_velocity = Vector3.ZERO
 	
-	player.position = to_global(Vector3(-2.6, 1.7, 0.0))
+	player.position = leave_marker.position
 	
 	player.show()
 	player.can_move = true
