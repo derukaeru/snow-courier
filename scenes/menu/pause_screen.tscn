@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bc08e4dmn7f3t" path="res://assets/sprites/menu/menu_border.png" id="2_04k7x"]
 [ext_resource type="PackedScene" uid="uid://qwnbh6anlo1c" path="res://scenes/menu/settings_screen.tscn" id="3_ruv5c"]
 [ext_resource type="Shader" uid="uid://bdtkqtwhm6ifw" path="res://assets/shaders/buckshot.gdshader" id="4_x8jkt"]
+[ext_resource type="AudioStream" uid="uid://b10yx2pv0jbit" path="res://assets/sfx/menu_select.ogg" id="5_pp2s5"]
+[ext_resource type="AudioStream" uid="uid://cq6888gt82qny" path="res://assets/sfx/menu_hover.wav" id="6_hglf7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_04k7x"]
 
@@ -164,6 +166,12 @@ grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1219063288]
 libraries/ = SubResource("AnimationLibrary_pp2s5")
+
+[node name="select_sfx" type="AudioStreamPlayer" parent="." unique_id=1992634011]
+stream = ExtResource("5_pp2s5")
+
+[node name="hover_sfx" type="AudioStreamPlayer" parent="." unique_id=1930256482]
+stream = ExtResource("6_hglf7")
 
 [connection signal="mouse_entered" from="VBoxContainer/resume" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="VBoxContainer/resume" to="." method="mouse_exited" flags=18]

@@ -11,7 +11,7 @@ var UID: Dictionary = {
 	"interact_bubble": "uid://deqnvv7npmvhr",
 	"route_map": "uid://d8y5na0yx71p",
 	
-	"main": "uid://b1mkou3w6vrst",
+	"main": "uid://tetiuyj7kfoe",
 	"mail_marker": "uid://bhlv87pnhpyu3"
 }
 

@@ -11,12 +11,20 @@ class_name Car extends VehicleBody3D
 @onready var enter_interact_right: InteractableComponent = $enter_interact_right
 
 @onready var leave_car: InteractableComponent = $leave_car
+@onready var engine_sfx: AudioStreamPlayer3D = $engine_sfx
+@onready var enter_sfx: AudioStreamPlayer3D = $enter_sfx
 
 var brakelight_left_mat: Material
 var brakelight_right_mat: Material
 
 var max_steer: float = 0.6
 var speed: float = 500
+
+var max_speed: float = speed
+var min_pitch: float = 0.8
+var max_pitch: float = 1.7
+var min_volume_db: float = -20.0
+var max_volume_db: float = 0.0
 
 var player_in: bool = false
 var is_leaving: bool = false
@@ -35,6 +43,7 @@ func _ready() -> void:
 	brakelight_right_mat = brakelight_mesh_right.get_active_material(0)
 	
 	EventBus.car_exited.emit(self)
+	engine_sfx.play()
 
 func _physics_process(delta: float) -> void:
 	if is_leaving:
@@ -44,6 +53,12 @@ func _physics_process(delta: float) -> void:
 		if linear_velocity.length() < 0.05 and angular_velocity.length() < 0.05:
 			is_leaving = false
 			freeze = true
+	
+	var current_speed: float = linear_velocity.length()
+	var speed_ratio: float = clamp(current_speed / max_speed, 0.0, 1.0)
+	
+	engine_sfx.volume_db = lerp(min_volume_db, max_volume_db, speed_ratio)
+	engine_sfx.pitch_scale = lerp(min_pitch, max_pitch, speed_ratio)
 	
 	if not player_in: return
 	
@@ -74,6 +89,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		brakelight_left_mat.emission_enabled = false
 		brakelight_right_mat.emission_enabled = false
+	
 
 func interacted() -> void:
 	var player: Player = Util.get_player()
@@ -101,6 +117,7 @@ func interacted() -> void:
 	
 	tween_bob()
 	
+	enter_sfx.play()
 	await get_tree().create_timer(1.0).timeout
 	leave_car.active = true
 	

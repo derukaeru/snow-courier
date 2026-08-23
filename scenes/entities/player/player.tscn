@@ -42,3 +42,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0203505, 0)
 [node name="Camera3D" type="Camera3D" parent="camera_anchor" unique_id=344700913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57851696, 1.8085278)
 fov = 80.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1931904077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9943496, 0)
+current = true
+
+[node name="walk_sfx" type="AudioStreamPlayer3D" parent="." unique_id=1284724784]
+bus = &"sfx"

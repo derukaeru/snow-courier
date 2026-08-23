@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cmqefons57x4n" path="res://scenes/objects/world/mailbox.gd" id="1_rltjr"]
 [ext_resource type="Texture2D" uid="uid://cdphfbx6gf4mk" path="res://assets/models/objects/mailbox/mailbox.png" id="2_cu3sa"]
-[ext_resource type="PackedScene" uid="uid://deqnvv7npmvhr" path="res://scenes/objects/interact_bubble/interact_bubble.tscn" id="2_vqxgf"]
 [ext_resource type="ArrayMesh" uid="uid://brfir8n05wwnj" path="res://assets/models/objects/mailbox/mailbox.obj" id="4_cu3sa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rltjr"]
@@ -23,7 +22,7 @@ _data = {
 
 [node name="mailbox" type="Area3D" unique_id=1421439976]
 script = ExtResource("1_rltjr")
-interact_text = "."
+interact_text = "interact"
 metadata/_custom_type_script = "uid://dj1tk7mo3fyg3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=489897368]
@@ -40,8 +39,8 @@ mesh = ExtResource("4_cu3sa")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=855302885]
 libraries/ = SubResource("AnimationLibrary_vqxgf")
 
-[node name="interact_bubble" parent="." unique_id=671375717 instance=ExtResource("2_vqxgf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1497458, 0)
-visible = false
+[node name="submit_sfx" type="AudioStreamPlayer3D" parent="." unique_id=1078229105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82418966, 0)
+bus = &"sfx"
 
 [connection signal="interacted" from="." to="." method="_on_interacted"]

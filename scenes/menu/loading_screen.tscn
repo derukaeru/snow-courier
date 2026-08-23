@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://tetiuyj7kfoe"]
 
-[ext_resource type="Script" uid="uid://b4683ndx4cykq" path="res://scenes/menu/loading_screen.gd" id="1_4je5t"]
+[ext_resource type="Script" uid="uid://6fvebx787ms" path="res://scenes/menu/loading_screen.gd" id="1_4je5t"]
 
 [sub_resource type="Animation" id="Animation_4je5t"]
 length = 0.001
@@ -39,17 +39,10 @@ _data = {
 &"fade": SubResource("Animation_w2ej8")
 }
 
-[node name="loading_screen" type="Control" unique_id=444401678]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="loading_screen" type="CanvasLayer" unique_id=2013108576]
 script = ExtResource("1_4je5t")
 
-[node name="cover" type="ColorRect" parent="." unique_id=1938715235]
-layout_mode = 1
+[node name="cover" type="ColorRect" parent="." unique_id=501785370]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -57,5 +50,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=771845139]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2116900277]
 libraries/ = SubResource("AnimationLibrary_4je5t")

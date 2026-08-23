@@ -1,13 +1,14 @@
-extends Control
+extends CanvasLayer
 
 signal loading_screen_ready
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	show()
 	animation.play("fade")
 	await animation.animation_finished
 	loading_screen_ready.emit()
-
+ 
 func _on_progress_changed(_value) -> void:
 	pass
 

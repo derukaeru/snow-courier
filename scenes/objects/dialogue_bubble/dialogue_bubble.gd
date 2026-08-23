@@ -2,6 +2,7 @@ class_name DialogBubble extends Node3D
 
 @onready var label: Label3D = $Label3D
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var type_sfx: AudioStreamPlayer3D = $type_sfx
 
 signal dialogue_finished
 signal done
@@ -43,6 +44,7 @@ func _process(delta: float) -> void:
 func add_letter(letter: String) -> void:
 	label.text += letter
 	letter_index += 1
+	type_sfx.play()
 
 func next_line() -> void:
 	type_diff = 0

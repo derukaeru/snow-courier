@@ -2,6 +2,8 @@ class_name Mailbox extends InteractableComponent
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var model_container: Node3D = $model_container
 
+@onready var submit_sfx: AudioStreamPlayer3D = $submit_sfx
+
 @export var id: int = 0
 var is_active: bool = false
 
@@ -12,11 +14,13 @@ func _ready() -> void:
 
 func _on_interacted() -> void:
 	if not is_active: return
-	
+	print(interacted)
 	animation.play("interact")
 	EventBus.delivered_mail.emit(id)
 	GameManager.give_mail_task()
 	is_active = false
+	
+	submit_sfx.play()
 
 func set_as_next_mail(_id: int) -> void:
 	if _id != id: return

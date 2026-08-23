@@ -3,7 +3,16 @@
 [ext_resource type="Script" uid="uid://bowbd515pm6eb" path="res://scenes/menu/title_screen.gd" id="1_cbih2"]
 [ext_resource type="PackedScene" uid="uid://qwnbh6anlo1c" path="res://scenes/menu/settings_screen.tscn" id="2_4crq4"]
 [ext_resource type="Shader" uid="uid://bdtkqtwhm6ifw" path="res://assets/shaders/buckshot.gdshader" id="2_200k4"]
+[ext_resource type="Shader" uid="uid://d2b006df644rd" path="res://assets/shaders/background.gdshader" id="2_spmwh"]
+[ext_resource type="Texture2D" uid="uid://7eg2nhnx3moa" path="res://assets/sprites/menu/background_loop_1.png" id="3_lh61k"]
 [ext_resource type="Texture2D" uid="uid://bc08e4dmn7f3t" path="res://assets/sprites/menu/menu_border.png" id="3_oq80g"]
+[ext_resource type="AudioStream" uid="uid://cq6888gt82qny" path="res://assets/sfx/menu_hover.wav" id="7_1hsha"]
+[ext_resource type="Texture2D" uid="uid://dvdkr3etbufm1" path="res://assets/sprites/menu/title.png" id="7_lh61k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1hsha"]
+shader = ExtResource("2_spmwh")
+shader_parameter/speed_x = 0.3
+shader_parameter/speed_y = 0.3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oq80g"]
 
@@ -38,6 +47,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cbih2")
 
+[node name="background" type="TextureRect" parent="." unique_id=492954406]
+modulate = Color(0.15487596, 0.154876, 0.15487596, 1)
+material = SubResource("ShaderMaterial_1hsha")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("3_lh61k")
+stretch_mode = 1
+
+[node name="title" type="TextureRect" parent="." unique_id=125121503]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -161.0
+offset_right = 128.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_lh61k")
+
 [node name="main_menu" type="Control" parent="." unique_id=1023828125]
 layout_mode = 1
 anchors_preset = 8
@@ -45,10 +82,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 26.0
-offset_right = 20.0
-offset_bottom = 66.0
+offset_left = -24.0
+offset_top = 48.0
+offset_right = 24.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -137,6 +174,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="hover_sfx" type="AudioStreamPlayer" parent="." unique_id=251579385]
+stream = ExtResource("7_1hsha")
+bus = &"sfx"
+
+[node name="select_sfx" type="AudioStreamPlayer" parent="." unique_id=1693239548]
+bus = &"sfx"
+
 [connection signal="mouse_entered" from="main_menu/start" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/start" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="main_menu/start" to="." method="start_pressed"]
@@ -145,3 +189,4 @@ mouse_filter = 2
 [connection signal="pressed" from="main_menu/settings" to="." method="settings_pressed"]
 [connection signal="mouse_entered" from="main_menu/exit" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/exit" to="." method="mouse_exited" flags=18]
+[connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
