@@ -12,9 +12,13 @@
 ### controls
 
 WASD - move
+
 ARROWS - look around
+
 E - interact
+
 ESC - pause
+
 
 ### how to set this up locally
 
