@@ -3,6 +3,7 @@ class_name Mailbox extends InteractableComponent
 @onready var model_container: Node3D = $model_container
 
 @onready var submit_sfx: AudioStreamPlayer3D = $submit_sfx
+@onready var submit_particle: GPUParticles3D = $submit
 
 @export var id: int = 0
 var is_active: bool = false
@@ -25,6 +26,7 @@ func _on_interacted() -> void:
 	active_marker.queue_free()
 	
 	submit_sfx.play()
+	submit_particle.emitting = true
 
 func set_as_next_mail(_id: int) -> void:
 	if _id != id: return
