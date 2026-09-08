@@ -68,6 +68,8 @@ func _physics_process(delta: float) -> void:
 		var upright: bool = global_transform.basis.y.dot(Vector3.UP) >= max_exit_tilt_dot
 		leave_car.active = can_leave and current_speed <= max_exit_speed and upright
 		
+		GameManager.ui.speed_label.text = str(int(abs(current_speed))) + "km/h"
+	
 	if not player_in: return
 	
 	var player: Player = Util.get_player()
@@ -119,7 +121,7 @@ func interacted() -> void:
 	steering = 0.0
 	brake = 0.0
 	engine_force = 0.0
-		
+	
 	enter_interact_left.active = false
 	enter_interact_right.active = false
 	
@@ -127,9 +129,11 @@ func interacted() -> void:
 	
 	enter_sfx.play()
 	can_leave = false
+	GameManager.ui.car_ui.show()
 	await get_tree().create_timer(1.0).timeout
 	leave_car.active = true
 	can_leave = true
+	
 	
 func exit() -> void:
 	var player: Player = Util.get_player()
@@ -160,6 +164,7 @@ func exit() -> void:
 	enter_interact_right.active = true
 	leave_car.active = false
 	tween_bob()
+	GameManager.ui.car_ui.hide()
 	
 	await get_tree().create_timer(1.0).timeout
 	player.collision.set_deferred("disabled", false)

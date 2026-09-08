@@ -9,6 +9,8 @@ radius = 0.28271484
 height = 1.1357422
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58kc7"]
+diffuse_mode = 1
+disable_specular_occlusion = true
 albedo_texture = ExtResource("2_58kc7")
 texture_filter = 0
 
