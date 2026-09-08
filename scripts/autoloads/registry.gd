@@ -21,3 +21,7 @@ var MAPS: Dictionary = {
 	"post_office": "uid://b1x76yhq81h6t",
 	"store_one": "uid://cfjcr2riv1gfk"
 }
+
+var MUSIC: Dictionary = {
+	"lofi-snowskate": "uid://dxx3rkuox7hsr"
+}

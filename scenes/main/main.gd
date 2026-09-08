@@ -5,8 +5,12 @@ extends Node3D
 @onready var entities: Node3D = $entities
 @onready var car_anchor: Marker3D = $car_anchor
 
+@onready var background_music: AudioStreamPlayer = $background_music
+
 var old_map_id: String
 var map_id: String = "post_office"
+
+var current_music_playing: String = "lofi-snowskate"
 
 func _ready() -> void:
 	EventBus.go_to_map.connect(go_to_map)
@@ -22,6 +26,13 @@ func _ready() -> void:
 	
 	GameManager.ui.show()
 	go_to_map(map_id)
+
+func _process(_delta: float) -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if Input.is_action_just_pressed("cycle") and player.is_in_car:
+		cycle_music()
 
 func go_to_map(id: String, is_outside: bool = false) -> void:
 	EventBus.player_not_move.emit()
@@ -68,7 +79,6 @@ func changed_map(prev_map: String, new_map: String) -> void:
 		"main_outside":
 			change_background_color(Color("#191919"))
 			EventBus.set_car.emit(car_anchor)
-			
 
 func set_camera(camera_marker: Marker3D, pivot: Vector3 = Vector3.ZERO, wander_free: bool = false) -> void:
 	var player: Player = Util.get_player()
@@ -116,3 +126,22 @@ func set_car_anchor(car: VehicleBody3D) -> void:
 	car_anchor.position = car.position
 	car_anchor.basis = car.basis
 	car_anchor.rotation = car.rotation
+
+func cycle_music() -> void:
+	var music_names: Array = Registry.MUSIC.keys()
+	var current_index: int = music_names.find(current_music_playing)
+	
+	if not current_index:
+		return push_error("Could not find index of song %s " % current_music_playing)
+	
+	current_index += 1
+	if current_index >= music_names.size():
+		current_index = 0
+	
+	current_music_playing = music_names[current_index]
+	load_music()
+
+func load_music() -> void:
+	if not Registry.MUSIC.has(current_music_playing): 
+		return push_error("Registry does not have a record of this music %s " % current_music_playing)
+	background_music.stream = load(Registry.MUSIC[current_music_playing])
