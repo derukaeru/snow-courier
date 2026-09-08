@@ -36,4 +36,5 @@ func set_as_next_mail(_id: int) -> void:
 	add_child(marker)
 	active_marker = marker
 	
+	GameManager.current_mailbox = self
 	marker.position.y = 1.5

@@ -8,6 +8,7 @@ var changing_rooms: bool = false
 
 const normal_fov: float = 75.0
 var current_mail_task: int = -1
+var current_mailbox: Mailbox = null
 
 func _ready() -> void:
 	add_child(canvas_layer)
@@ -15,9 +16,6 @@ func _ready() -> void:
 	
 	canvas_layer.add_child(ui)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-func _process(_d: float) -> void:
-	pass
 
 func change_map(id: String) -> void:
 	if Registry.MAPS.has(id):

@@ -4,9 +4,7 @@ class_name UI extends CanvasLayer
 @onready var room_transition: ColorRect = $room_transition
 @onready var room_transition_anim: AnimationPlayer = $room_transition/AnimationPlayer
 @onready var shader: ColorRect = $shader
-
-func _ready() -> void:
-	pass
+@onready var distance_label: Label = $pause_screen/settings_screen/fullscreen_label
 
 func _process(_delta: float) -> void:
 	if not GameManager.game_running or get_tree().paused: return

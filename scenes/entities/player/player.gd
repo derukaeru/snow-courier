@@ -37,6 +37,13 @@ func _ready() -> void:
 			velocity = Vector3.ZERO
 	)
 
+func _process(_delta: float) -> void:
+	if GameManager.current_mail_task >= 0 and GameManager.current_mailbox:
+		GameManager.ui.distance_label.show()
+		GameManager.ui.distance_label.text = "tmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+	else:
+		GameManager.ui.distance_label.hide()
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta

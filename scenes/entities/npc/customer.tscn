@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cq7ups2eo8rpg"]
+
+[ext_resource type="PackedScene" uid="uid://bjt15iuday65v" path="res://scenes/entities/npc/static_npc.tscn" id="1_06vg2"]
+
+[node name="customer" unique_id=542692205 instance=ExtResource("1_06vg2")]

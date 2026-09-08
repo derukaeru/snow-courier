@@ -62,6 +62,17 @@ shader_parameter/viewport_size_override = Vector2(0, 0)
 layer = 2
 script = ExtResource("1_u7n8c")
 
+[node name="delivery_distance" type="Label" parent="." unique_id=420177490]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_right = 88.0
+offset_bottom = 40.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="room_transition" type="ColorRect" parent="." unique_id=2116171725]
 anchors_preset = 15
 anchor_right = 1.0

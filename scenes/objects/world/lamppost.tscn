@@ -19,7 +19,6 @@ mesh = ExtResource("1_k8bul")
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 6.2507353, 0.406)
 light_energy = 2.25
 light_bake_mode = 0
-distance_fade_enabled = true
 distance_fade_begin = 20.65
 spot_range = 14.919
 spot_attenuation = 0.57
