@@ -9,6 +9,7 @@ class_name UI extends CanvasLayer
 @onready var distance_label: Label = $pause_screen/settings_screen/fullscreen_label
 @onready var song_label: Label = $car_ui/song
 @onready var speed_label: Label = $car_ui/speed
+@onready var objective: Label = $objective
 
 func _process(_delta: float) -> void:
 	if not GameManager.game_running or get_tree().paused: return

@@ -65,6 +65,17 @@ shader_parameter/viewport_size_override = Vector2(0, 0)
 layer = 2
 script = ExtResource("1_u7n8c")
 
+[node name="objective" type="Label" parent="." unique_id=1929172056]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -456.0
+offset_right = 334.0
+offset_bottom = -437.0
+grow_vertical = 0
+text = "objective: talk to the postman"
+
 [node name="delivery_distance" type="Label" parent="." unique_id=420177490]
 visible = false
 anchors_preset = 5

@@ -38,7 +38,7 @@ func _ready() -> void:
 	)
 
 func _process(_delta: float) -> void:
-	if GameManager.current_mail_task >= 0 and GameManager.current_mailbox:
+	if GameManager.current_mail_task >= 0 and is_in_car:
 		GameManager.ui.distance_label.show()
 		GameManager.ui.distance_label.text = str(int(position.distance_to(GameManager.current_mailbox.position))) + "m"
 	else:
@@ -111,7 +111,7 @@ func interact() -> void:
 	for entry in interactions:
 		if entry.active:
 			entry.interact()
-			
+
 func snap_to_ground_if_needed() -> void:
 	var space_state := get_world_3d().direct_space_state
 	var origin: Vector3 = global_position + Vector3.UP * ground_check_height
@@ -119,15 +119,13 @@ func snap_to_ground_if_needed() -> void:
 	
 	var query := PhysicsRayQueryParameters3D.create(origin, target)
 	query.exclude = [self]
-	# query.collision_mask = 1  # set this to your world/floor layer if needed
 	
 	var result: Dictionary = space_state.intersect_ray(query)
 	if result.is_empty():
-		return  # no floor found below/around — nothing to snap to, leave as is
+		return 
 	
 	var floor_y: float = result.position.y
 	
-	# If the player is meaningfully below the floor hit point, they're stuck under the map
 	if global_position.y < floor_y - 0.05:
 		global_position.y = floor_y + 0.05
 		velocity.y = 0.0

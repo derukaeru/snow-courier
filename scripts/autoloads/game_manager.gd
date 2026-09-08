@@ -35,3 +35,4 @@ func give_mail_task() -> void:
 	
 	current_mail_task = id
 	EventBus.set_mailbox.emit(id)
+	GameManager.ui.objective.text = "objective: deliver mail"

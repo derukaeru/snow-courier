@@ -24,8 +24,11 @@ func _ready() -> void:
 	EventBus.add_entities.connect(add_entities)
 	EventBus.car_exited.connect(set_car_anchor)
 	
-	GameManager.ui.show()
+	GameManager.ui.show() 
+	GameManager.ui.objective.show()
 	go_to_map(map_id)
+	
+	load_music()
 
 func _process(_delta: float) -> void:
 	var player: Player = Util.get_player()

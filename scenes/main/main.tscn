@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://csjl48frtllnu" path="res://scenes/main/main.gd" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://c07cgn84heqn2" path="res://scenes/entities/player/player.tscn" id="2_iuonh"]
 [ext_resource type="PackedScene" uid="uid://b1x76yhq81h6t" path="res://scenes/world/post_office.tscn" id="3_l3cfh"]
-[ext_resource type="AudioStream" uid="uid://tjmflflm43w6" path="res://background_music.tres" id="4_l3cfh"]
 
 [sub_resource type="Environment" id="Environment_l3cfh"]
 background_mode = 1
@@ -32,7 +31,6 @@ environment = SubResource("Environment_l3cfh")
 [node name="car_anchor" type="Marker3D" parent="." unique_id=1890289894]
 
 [node name="background_music" type="AudioStreamPlayer" parent="." unique_id=2099434232]
-stream = ExtResource("4_l3cfh")
 volume_db = -0.31
 autoplay = true
 bus = &"music"

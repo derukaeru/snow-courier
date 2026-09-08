@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4ggbq71lpwo4"]
 
-[ext_resource type="Texture2D" uid="uid://cehbeor7fx03k" path="res://assets/sprites/watermark/logo.png" id="1_fpraa"]
-[ext_resource type="Script" uid="uid://dqyvin4ic2ceo" path="res://scenes/menu/splash_screen.gd" id="1_rr7ju"]
+[ext_resource type="Texture2D" uid="uid://qipkrref08ap" path="res://assets/sprites/watermark/logo.png" id="1_fpraa"]
+[ext_resource type="Script" uid="uid://8dqximevpkim" path="res://scenes/menu/splash_screen.gd" id="1_rr7ju"]
 
 [sub_resource type="Animation" id="Animation_fpraa"]
 length = 0.001
