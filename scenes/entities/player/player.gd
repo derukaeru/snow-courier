@@ -40,7 +40,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if GameManager.current_mail_task >= 0 and GameManager.current_mailbox:
 		GameManager.ui.distance_label.show()
-		GameManager.ui.distance_label.text = "tmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+		GameManager.ui.distance_label.text = str(int(position.distance_to(GameManager.current_mailbox.position))) + "m"
 	else:
 		GameManager.ui.distance_label.hide()
 
