@@ -20,6 +20,12 @@ E - interact
 ESC - pause
 
 
+### how to play this
+- you can play it on [my itch.io](https://derukaeru.itch.io/snow-courier)
+- download the windows version (could not get the web version with the extensions sorry)
+- extract
+- then run!
+
 ### how to set this up locally
 
 - download godot 4.6.2
