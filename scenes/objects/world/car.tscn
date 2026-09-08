@@ -97,7 +97,7 @@ transform = Transform3D(0.9999976, 0, -4.4703484e-08, 0, 1, 0, 4.4703484e-08, 0,
 shape = SubResource("BoxShape3D_haxwh")
 
 [node name="leave_marker" type="Marker3D" parent="." unique_id=950815526]
-transform = Transform3D(-0.99979895, 0, -0.020052582, 0, 1, 0, 0.020052582, 0, -0.99979895, -2.772, 1.8, -0.458)
+transform = Transform3D(-0.9997989, 8.6736174e-19, -0.020052578, -0.000117593794, 0.99998283, 0.005863094, 0.020052236, 0.0058642724, -0.9997817, -2.294363, 1.8, -0.458)
 
 [node name="Label3D" type="Label3D" parent="leave_marker" unique_id=906793359]
 visible = false

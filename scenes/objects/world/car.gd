@@ -17,8 +17,8 @@ class_name Car extends VehicleBody3D
 var brakelight_left_mat: Material
 var brakelight_right_mat: Material
 
-var max_steer: float = 0.6
-var speed: float = 500
+var max_steer: float = 0.8
+var speed: float = 540
 
 var max_speed: float = 15.0
 var min_pitch: float = 0.8
