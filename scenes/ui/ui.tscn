@@ -66,6 +66,7 @@ layer = 2
 script = ExtResource("1_u7n8c")
 
 [node name="objective" type="Label" parent="." unique_id=1929172056]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -125,6 +126,15 @@ offset_bottom = 395.0
 text = "0km/h"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="time" type="Label" parent="car_ui" unique_id=722406439]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 408.0
+offset_right = 600.0
+offset_bottom = 427.0
+text = "00:00"
+horizontal_alignment = 2
 
 [node name="room_transition" type="ColorRect" parent="." unique_id=2116171725]
 anchors_preset = 15

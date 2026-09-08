@@ -37,13 +37,6 @@ func _ready() -> void:
 			velocity = Vector3.ZERO
 	)
 
-func _process(_delta: float) -> void:
-	if GameManager.current_mail_task >= 0 and is_in_car:
-		GameManager.ui.distance_label.show()
-		GameManager.ui.distance_label.text = str(int(position.distance_to(GameManager.current_mailbox.position))) + "m"
-	else:
-		GameManager.ui.distance_label.hide()
-
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta

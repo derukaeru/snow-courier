@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cwk3320p0bjan" path="res://scenes/objects/world/buildings/building_8.tscn" id="12_o5dxn"]
 [ext_resource type="PackedScene" uid="uid://ds2bvnbrruvih" path="res://scenes/objects/world/buildings/building_9.tscn" id="13_0jxww"]
 [ext_resource type="Script" uid="uid://cw8027kkdy1c7" path="res://scripts/components/room_transition.gd" id="17_kpx70"]
+[ext_resource type="ArrayMesh" uid="uid://bc28ofuga4mjw" path="res://assets/models/objects/sign/sign.obj" id="17_p1hoj"]
+[ext_resource type="PackedScene" uid="uid://cq7ups2eo8rpg" path="res://scenes/entities/npc/customer.tscn" id="18_p1hoj"]
 
 [sub_resource type="Gradient" id="Gradient_rtp6k"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -411,6 +413,10 @@ id = 37
 transform = Transform3D(-0.78349817, 0, 0.6213939, 0, 1, 0, -0.6213939, 0, -0.78349817, 17.161743, 17.951937, -11.9913225)
 id = 38
 
+[node name="Sign" type="MeshInstance3D" parent="objects" unique_id=1965024459]
+transform = Transform3D(0.22897956, 0, 0.9734313, 0, 1, 0, -0.9734313, 0, 0.22897956, 49.604153, 17.958033, 46.17826)
+mesh = ExtResource("17_p1hoj")
+
 [node name="spawns" type="Node3D" parent="." unique_id=1899116206]
 
 [node name="first_room" type="Marker3D" parent="spawns" unique_id=1943223690]
@@ -743,3 +749,90 @@ metadata/_custom_type_script = "uid://cw8027kkdy1c7"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="post_office" unique_id=955243193]
 transform = Transform3D(0.7816838, 0, -0.6236749, 0, 1, 0, 0.6236749, 0, 0.7816838, -0.15018082, -1.1512451, 0.2827263)
 shape = SubResource("BoxShape3D_p1hoj")
+
+[node name="customers" type="Node3D" parent="." unique_id=781189490]
+
+[node name="customer" parent="customers" unique_id=542692205 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.593555, 17.975048, 32.153465)
+NAME = "npc_0"
+dialogue_paragraph = "greet"
+
+[node name="customer2" parent="customers" unique_id=1475278835 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.067562, 17.975048, -9.00397)
+NAME = "npc_1"
+dialogue_paragraph = "greet"
+
+[node name="customer3" parent="customers" unique_id=1019830503 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.994743, 17.975048, -28.723194)
+NAME = "npc_2"
+dialogue_paragraph = "greet"
+
+[node name="customer4" parent="customers" unique_id=1324711953 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.49774, 17.975048, -59.070946)
+NAME = "npc_3"
+dialogue_paragraph = "greet"
+
+[node name="customer5" parent="customers" unique_id=294288794 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.105156, 17.975048, -55.756927)
+NAME = "npc_4"
+dialogue_paragraph = "greet"
+
+[node name="customer6" parent="customers" unique_id=1404998794 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.105156, 17.975048, -55.756927)
+NAME = "npc_5"
+dialogue_paragraph = "greet"
+
+[node name="customer7" parent="customers" unique_id=19207381 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.15882, 17.975048, -47.998554)
+NAME = "npc_6"
+dialogue_paragraph = "greet"
+
+[node name="customer8" parent="customers" unique_id=1824990937 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.53386, 17.975048, -32.680115)
+NAME = "npc_7"
+dialogue_paragraph = "greet"
+
+[node name="customer9" parent="customers" unique_id=841276766 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.49434, 17.975048, 30.325615)
+NAME = "npc_8"
+dialogue_paragraph = "greet"
+
+[node name="customer10" parent="customers" unique_id=204788467 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.8678, 17.975048, -5.387394)
+NAME = "npc_9"
+dialogue_paragraph = "greet"
+
+[node name="customer11" parent="customers" unique_id=595144409 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.44983, 17.975048, -6.1116486)
+NAME = "npc_10"
+dialogue_paragraph = "greet"
+
+[node name="customer12" parent="customers" unique_id=354978803 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.54337, 17.975048, -87.07693)
+NAME = "npc_11"
+dialogue_paragraph = "greet"
+
+[node name="customer13" parent="customers" unique_id=1404058568 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.81703, 17.975048, -115.586365)
+NAME = "npc_12"
+dialogue_paragraph = "greet"
+
+[node name="customer14" parent="customers" unique_id=1837680298 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.608925, 17.975048, -120.64006)
+NAME = "npc_13"
+dialogue_paragraph = "greet"
+
+[node name="customer15" parent="customers" unique_id=1643664033 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.100281, 17.975048, -70.63924)
+NAME = "npc_14"
+dialogue_paragraph = "greet"
+
+[node name="customer16" parent="customers" unique_id=1105605761 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.086304, 17.975048, -36.571693)
+NAME = "npc_15"
+dialogue_paragraph = "greet"
+
+[node name="customer17" parent="customers" unique_id=555906230 instance=ExtResource("18_p1hoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.681984, 17.975048, -13.935226)
+NAME = "npc_15"
+dialogue_paragraph = "greet"

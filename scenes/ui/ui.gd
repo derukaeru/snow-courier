@@ -10,6 +10,7 @@ class_name UI extends CanvasLayer
 @onready var song_label: Label = $car_ui/song
 @onready var speed_label: Label = $car_ui/speed
 @onready var objective: Label = $objective
+@onready var time_label: Label = $car_ui/time
 
 func _process(_delta: float) -> void:
 	if not GameManager.game_running or get_tree().paused: return
@@ -24,3 +25,14 @@ func _process(_delta: float) -> void:
 		else:
 			get_tree().paused = true
 			pause_screen.open()
+	
+	time_label.text = Time.get_time_string_from_system().substr(0, 5)
+	
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if GameManager.current_mail_task >= 0 and player.is_in_car:
+		distance_label.show()
+		distance_label.text = str(int(player.position.distance_to(GameManager.current_mailbox.position))) + "m"
+	else:
+		distance_label.hide()
